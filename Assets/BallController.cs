@@ -5,7 +5,7 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     public Rigidbody rigidBody;
-    public float jumpForce;
+    public float jumpForce, speed;
     public int jumpCount;
     // Start is called before the first frame update
     void Start()
@@ -16,29 +16,29 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
-            rigidBody.AddForce(Vector3.forward);
+            rigidBody.AddForce(Vector3.forward * speed);
         }
-    if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
-            rigidBody.AddForce(Vector3.back);
+            rigidBody.AddForce(Vector3.back * speed);
         }
-     if (Input.GetKey(KeyCode.D))
-            {
-                rigidBody.AddForce(Vector3.right);
-
-            }
-        
+        if (Input.GetKey(KeyCode.D))
+        {
+            rigidBody.AddForce(Vector3.right * speed);
+        }        
            
-        if (Input.GetKey(KeyCode.A)) { rigidBody.AddForce(Vector3.left); }
+        if (Input.GetKey(KeyCode.A)) 
+        {
+            rigidBody.AddForce(Vector3.left * speed); 
+        }
 
         if (Input.GetKeyDown(KeyCode.Space)) {
             if (rigidBody.velocity.y == 0)
             {
                 rigidBody.AddForce(Vector3.up * jumpForce);
                 jumpCount = 1;
-
             }
             else
             {
@@ -48,11 +48,7 @@ public class BallController : MonoBehaviour
                     rigidBody.AddForce(Vector3.up * jumpForce);
                     jumpCount = 2;
                 }
-            }
-            
-        }
-       
-            
+            }            
+        }     
     }
-
 }
