@@ -429,7 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 1570297022}
-  offset: {x: 0, y: 2, z: -8}
+  offset: {x: 0, y: 9, z: 2}
   cameraRotationDegrees: 0
 --- !u!1 &1570297022
 GameObject:
@@ -577,6 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4cafed1d42e3ea4e9be806d0037b43b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraController: {fileID: 963194229}
   rigidBody: {fileID: 1570297023}
   jumpForce: 350
   speed: 3

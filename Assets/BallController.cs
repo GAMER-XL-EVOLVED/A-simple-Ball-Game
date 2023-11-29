@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
+    public CameraController cameraController;
     public Rigidbody rigidBody;
     public float jumpForce, speed;
     public int jumpCount;
@@ -16,9 +17,13 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Quaternion rotation = Quaternion.Euler(0, cameraController.cameraRotationDegrees, 0);
+
         if (Input.GetKey(KeyCode.W))
         {
-            rigidBody.AddForce(Vector3.forward * speed);
+            Vector3 moveDirection = Vector3.forward * speed;
+            moveDirection = rotation * moveDirection;
+            rigidBody.AddForce(moveDirection);
         }
         if (Input.GetKey(KeyCode.S))
         {
