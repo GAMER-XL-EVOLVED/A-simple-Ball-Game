@@ -8,6 +8,7 @@ public class BallController : MonoBehaviour
     public Rigidbody rigidBody;
     public float jumpForce, speed;
     public int jumpCount;
+    public bool readyToJump;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,10 +49,12 @@ public class BallController : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Space)) {
-            if (rigidBody.velocity.y == 0)
+            // if (rigidBody.velocity.y == 0)
+            if (readyToJump)
             {
                 rigidBody.AddForce(Vector3.up * jumpForce);
                 jumpCount = 1;
+                readyToJump = false;
             }
             else
             {
@@ -63,5 +66,11 @@ public class BallController : MonoBehaviour
                 }
             }            
         }     
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collided with " + collision.gameObject.name);
+        readyToJump = true;
     }
 }
