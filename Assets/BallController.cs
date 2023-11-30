@@ -48,6 +48,10 @@ public class BallController : MonoBehaviour
             rigidBody.AddForce(moveDirection); 
         }
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            rigidBody.velocity = Vector3.zero;
+        }
         if (Input.GetKeyDown(KeyCode.Space)) {
             if (readyToJump)
             {
@@ -71,4 +75,8 @@ public class BallController : MonoBehaviour
     {
         readyToJump = true;
     }
-}
+    
+    
+       
+    }
+
