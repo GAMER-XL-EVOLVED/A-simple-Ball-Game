@@ -49,7 +49,6 @@ public class BallController : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Space)) {
-            // if (rigidBody.velocity.y == 0)
             if (readyToJump)
             {
                 rigidBody.AddForce(Vector3.up * jumpForce);
@@ -70,7 +69,6 @@ public class BallController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collided with " + collision.gameObject.name);
         readyToJump = true;
     }
 }
