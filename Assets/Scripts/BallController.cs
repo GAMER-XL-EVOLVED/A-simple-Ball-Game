@@ -9,6 +9,7 @@ public class BallController : MonoBehaviour
     public float jumpForce, speed;
     public int jumpCount;
     public bool readyToJump;
+    public int coinsCollected;
     // Start is called before the first frame update
     void Start()
     {
