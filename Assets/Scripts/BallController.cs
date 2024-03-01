@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
+    public AudioSource coinSound;
     public CameraController cameraController;
     public Rigidbody rigidBody;
-    public float jumpForce, speed;
-    public int jumpCount;
-    public bool readyToJump;
-    public int coinsCollected;
+    public float jumpForce, speed;  // a float is a decimal number
+    public int jumpCount;   
+    public bool readyToJump;        // bool,short for boolean,means True or False
+    public int coinsCollected;      // an int is a full number
     // Start is called before the first frame update
     void Start()
     {
@@ -77,8 +78,16 @@ public class BallController : MonoBehaviour
     {
         readyToJump = true;
     }
-    
-    
-       
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Coin")
+        {
+            coinsCollected += 1;
+            other.gameObject.SetActive(false);
+            coinSound.Play();
+        }
     }
+
+}
 
