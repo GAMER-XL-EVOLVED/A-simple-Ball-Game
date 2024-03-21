@@ -24,20 +24,20 @@ public class BallController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            Vector3 moveDirection = Vector3.forward * speed;
+            Vector3 moveDirection = Vector3.forward * speed * Time.deltaTime ;
             moveDirection = rotation * moveDirection;
             rigidBody.AddForce(moveDirection);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            Vector3 moveDirection = Vector3.back * speed;
+            Vector3 moveDirection = Vector3.back * speed * Time.deltaTime ;
             moveDirection = rotation * moveDirection;
             
             rigidBody.AddForce(moveDirection);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            Vector3 moveDirection = Vector3.right * speed;
+            Vector3 moveDirection = Vector3.right * speed * Time.deltaTime ;
             moveDirection = rotation * moveDirection;
 
             rigidBody.AddForce(moveDirection);
@@ -45,7 +45,7 @@ public class BallController : MonoBehaviour
            
         if (Input.GetKey(KeyCode.A)) 
         {
-            Vector3 moveDirection = Vector3.left * speed;
+            Vector3 moveDirection = Vector3.left * speed * Time.deltaTime ;
             moveDirection = rotation * moveDirection;
             rigidBody.AddForce(moveDirection); 
         }
