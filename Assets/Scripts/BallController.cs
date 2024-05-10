@@ -11,6 +11,7 @@ public class BallController : MonoBehaviour
     public int jumpCount;   
     public bool readyToJump;        // bool,short for boolean,means True or False
     public int coinsCollected;      // an int is a full number
+    private bool followPlatform = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,12 +62,13 @@ public class BallController : MonoBehaviour
                 rigidBody.AddForce(Vector3.up * jumpForce);
                 jumpCount = 1;
                 readyToJump = false;
+                followPlatform = false;  // Disable following the platform 
             }
             else
             {
                 if (jumpCount == 1)
                 {
-                     rigidBody.velocity = new Vector3(rigidBody.velocity.x, 0, rigidBody.velocity.z);
+                    rigidBody.velocity = new Vector3(rigidBody.velocity.x, 0, rigidBody.velocity.z);
                     rigidBody.AddForce(Vector3.up * jumpForce);
                     jumpCount = 2;
                 }
@@ -76,6 +78,10 @@ public class BallController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            followPlatform = true;  // Re-enable following the platform
+        }
         readyToJump = true;
     }
 
@@ -86,6 +92,17 @@ public class BallController : MonoBehaviour
             coinsCollected += 1;
             other.gameObject.SetActive(false);
             coinSound.Play();
+        }
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("MovingPlatform") && followPlatform)
+        {
+            Rigidbody platformRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            if (platformRigidbody != null)
+            {
+                rigidBody.velocity = new Vector3(rigidBody.velocity.x, platformRigidbody.velocity.y, rigidBody.velocity.z);
+            }
         }
     }
 
