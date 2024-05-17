@@ -6,7 +6,7 @@ public class MovingPlatform : MonoBehaviour
     public Vector3 endPosition;
     public float speed = 1.0f;
     private float startTime;
-    private float journeyLength;
+    public float journeyLength;
 
     void Start()
     {
