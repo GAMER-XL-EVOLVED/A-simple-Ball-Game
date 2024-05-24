@@ -8,7 +8,8 @@ public class CameraController : MonoBehaviour
     public Vector3 offset;
     public float cameraRotationDegrees = 0;
     public float cameraPitchDegrees = 0;
-
+    public float rightStickHorizontal;
+    public float rightStickVertical;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,17 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+         rightStickHorizontal = Input.GetAxis("RightStickHorizontal");
+         rightStickVertical = Input.GetAxis("RightStickVertical");
+        if (rightStickHorizontal != 0)
+        {
+            cameraRotationDegrees += rightStickHorizontal;
+        }
+        if (rightStickVertical != 0)
+        {
+            cameraPitchDegrees -= rightStickVertical;
+        }
+        
         if(Input.GetAxis("Mouse X") != 0)
         {
             cameraRotationDegrees += Input.GetAxis("Mouse X");

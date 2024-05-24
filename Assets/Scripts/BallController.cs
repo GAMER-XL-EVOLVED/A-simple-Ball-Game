@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BallController : MonoBehaviour
 {
@@ -21,8 +22,13 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
         Quaternion rotation = Quaternion.Euler(0, cameraController.cameraRotationDegrees, 0);
-
+        Vector3 Ps4moveDirection = new Vector3(moveHorizontal, 0, moveVertical);
+        Ps4moveDirection = Ps4moveDirection * speed * Time.deltaTime;
+        Ps4moveDirection = rotation * Ps4moveDirection;
+        rigidBody.AddForce(Ps4moveDirection);
         if (Input.GetKey(KeyCode.W))
         {
             Vector3 moveDirection = Vector3.forward * speed * Time.deltaTime ;

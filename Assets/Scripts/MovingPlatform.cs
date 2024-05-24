@@ -11,6 +11,7 @@ public class MovingPlatform : MonoBehaviour
     void Start()
     {
         startPosition = transform.position;
+        endPosition = startPosition + endPosition;
         if(endPosition.x == 0)
         {
             endPosition = new Vector3(startPosition.x, endPosition.y, endPosition.z);
