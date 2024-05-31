@@ -13,6 +13,9 @@ public class BallController : MonoBehaviour
     public bool readyToJump;        // bool,short for boolean,means True or False
     public int coinsCollected;      // an int is a full number
     private bool followPlatform = true;
+    public float moveHorizontal;
+    public float moveVertical;
+    public bool jumpButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +25,9 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        jumpButton = Input.GetKeyDown("joystick button 1");
+         moveHorizontal = Input.GetAxis("Horizontal");
+         moveVertical = Input.GetAxis("Vertical");
         Quaternion rotation = Quaternion.Euler(0, cameraController.cameraRotationDegrees, 0);
         Vector3 Ps4moveDirection = new Vector3(moveHorizontal, 0, moveVertical);
         Ps4moveDirection = Ps4moveDirection * speed * Time.deltaTime;
@@ -57,12 +61,12 @@ public class BallController : MonoBehaviour
             rigidBody.AddForce(moveDirection); 
         }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) || Input.GetKey("joystick button 5") || Input.GetKey("joystick button 4")) 
         {
             rigidBody.velocity = Vector3.zero;
             rigidBody.angularVelocity = Vector3.zero;
         }
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 1")) { 
             if (readyToJump)
             {
                 rigidBody.AddForce(Vector3.up * jumpForce);
