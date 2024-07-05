@@ -5,8 +5,18 @@ using UnityEngine;
 public class DeathTrigger : MonoBehaviour
 {
     public Vector3 respawnPoint; // Vector3 is a collection of 3 numbers. Usually X,Y,Z.
-    public AudioSource deathLaugh;
+    public AudioSource deathSound;
+    public bool Spike = true;
 
+
+    private void Start()
+    {
+        deathSound = GetComponent<AudioSource>();
+        if(Spike == true)
+        {
+            deathSound.volume = 0.5f;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,9 +24,9 @@ public class DeathTrigger : MonoBehaviour
         {
             other.transform.position = respawnPoint;
             other.GetComponent<Rigidbody>().velocity = Vector3.zero;
-           if(deathLaugh != null)
+           if(deathSound != null)
             {
-                deathLaugh.Play();
+                deathSound.Play();
             }
             
         }
