@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
     { 
         if (isChasing == true)
         {
-            Debug.Log((playerTransform.position - transform.position).magnitude.ToString());
+            
             if ((playerTransform.position - transform.position).magnitude >= chaseDistance) // If player is further away then chase distance
             {
                 isChasing = false;
