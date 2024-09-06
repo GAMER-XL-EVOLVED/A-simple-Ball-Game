@@ -15,7 +15,7 @@ public class EnemyDeathPoint : MonoBehaviour
         Debug.Log("The enemy should be deleted");
         if (other.tag == "Player")
         {
-            Destroy(this);
+            Destroy(gameObject);
 
 
         }

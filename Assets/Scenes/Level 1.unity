@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
+  m_IndirectSpecularColor: {r: 0.43718317, g: 0.75444984, b: 1.0290304, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2505,6 +2506,7 @@ GameObject:
   - component: {fileID: 614997634}
   - component: {fileID: 614997633}
   - component: {fileID: 614997632}
+  - component: {fileID: 614997635}
   m_Layer: 0
   m_Name: Enemy Weak Point
   m_TagString: Untagged
@@ -2554,13 +2556,29 @@ Transform:
   m_GameObject: {fileID: 614997631}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 719.6, y: 63.42, z: 223}
+  m_LocalPosition: {x: 68, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1954071345}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &614997635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614997631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73a0cf37a2dee57488bedaa387a757ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  isChasing: 0
+  playerTransform: {fileID: 1570297034}
+  chaseDistance: 100
 --- !u!1 &630694590
 GameObject:
   m_ObjectHideFlags: 0
@@ -6653,7 +6671,6 @@ GameObject:
   - component: {fileID: 1954071344}
   - component: {fileID: 1954071343}
   - component: {fileID: 1954071342}
-  - component: {fileID: 1954071346}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -6748,22 +6765,6 @@ Transform:
   - {fileID: 461165464}
   m_Father: {fileID: 614997634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1954071346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 3299941908119479277, guid: 857d42ccf3658dd42a5eff8e0ea55aaa, type: 3}
-  m_PrefabInstance: {fileID: 3775564323457935022}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1954071341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73a0cf37a2dee57488bedaa387a757ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 20
-  isChasing: 0
-  playerTransform: {fileID: 1570297034}
-  chaseDistance: 100
 --- !u!1 &1968697087
 GameObject:
   m_ObjectHideFlags: 0
@@ -7721,11 +7722,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8626832168487285794, guid: 857d42ccf3658dd42a5eff8e0ea55aaa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 719.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8626832168487285794, guid: 857d42ccf3658dd42a5eff8e0ea55aaa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 63.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8626832168487285794, guid: 857d42ccf3658dd42a5eff8e0ea55aaa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7759,7 +7760,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -8085,15 +8087,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7282302140574418294, guid: 4b180e0d4ccafbd4c89f46e555b9fa79, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 750
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7282302140574418294, guid: 4b180e0d4ccafbd4c89f46e555b9fa79, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 76
+      value: 1.47
       objectReference: {fileID: 0}
     - target: {fileID: 7282302140574418294, guid: 4b180e0d4ccafbd4c89f46e555b9fa79, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -187.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7282302140574418294, guid: 4b180e0d4ccafbd4c89f46e555b9fa79, type: 3}
       propertyPath: m_LocalRotation.w
