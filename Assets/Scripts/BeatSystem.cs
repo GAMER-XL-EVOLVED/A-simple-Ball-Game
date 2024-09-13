@@ -24,16 +24,21 @@ public class BeatSystem : MonoBehaviour
         endPosition = targetCircle.anchoredPosition;
         ResetBeatPosition();
         UpdateScoreDisplay();
+        beatCircle.localScale = Vector3.one * 3f; // Set initial scale to 3
     }
 
     void Update()
     {
         beatTimer += Time.deltaTime;
 
-        // Move beat circle
+        // Move and scale beat circle
         float progress = beatTimer / beatInterval;
         Vector2 newPosition = Vector2.Lerp(startPosition, endPosition, progress);
         beatCircle.anchoredPosition = newPosition;
+
+        // Scale from 3 to 1
+        float newScale = Mathf.Lerp(3f, 1f, progress);
+        beatCircle.localScale = Vector3.one * newScale;
 
         if (beatTimer >= beatInterval)
         {
@@ -50,6 +55,7 @@ public class BeatSystem : MonoBehaviour
     void ResetBeatPosition()
     {
         beatCircle.anchoredPosition = startPosition;
+        beatCircle.localScale = Vector3.one * 3f; // Reset scale to 3
     }
 
     void CheckBeatTiming()
