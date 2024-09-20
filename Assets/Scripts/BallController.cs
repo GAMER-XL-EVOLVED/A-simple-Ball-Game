@@ -61,7 +61,7 @@ public class BallController : MonoBehaviour
             rigidBody.AddForce(moveDirection); 
         }
 
-        if (Input.GetMouseButton(0) || Input.GetKey("joystick button 5") || Input.GetKey("joystick button 4")) 
+        if (Input.GetMouseButton(0) || Input.GetKey("joystick button 6") || Input.GetKey("joystick button 7")) 
         {
             rigidBody.velocity = Vector3.zero;
             rigidBody.angularVelocity = Vector3.zero;

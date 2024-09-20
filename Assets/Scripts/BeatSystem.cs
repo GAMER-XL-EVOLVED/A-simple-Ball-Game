@@ -46,7 +46,7 @@ public class BeatSystem : MonoBehaviour
             ResetBeatPosition();
         }
 
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.B) || Input.GetKeyDown("joystick button 4") || Input.GetKeyDown("joystick button 5"))
         {
             CheckBeatTiming();
         }
